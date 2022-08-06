@@ -4,7 +4,7 @@
 
 local UILib = loadstring(game:HttpGet('https://raw.githubusercontent.com/inceldom/kinx/main/ui'))()
 
-local win = UILib:Window("NBT HUB",Color3.fromRGB(44, 120, 224), Enum.KeyCode.RightControl)
+local win = UILib:Window("ZareWare",Color3.fromRGB(170, 0, 255), Enum.KeyCode.V)
 
 --------------------------------------------------------------------
 
@@ -12,444 +12,1526 @@ local win = UILib:Window("NBT HUB",Color3.fromRGB(44, 120, 224), Enum.KeyCode.Ri
 
 -- Main
 
-local MainSection = win:Tab("Main")
+local L1 = win:Tab("Player")
 
-local client = game.Players.LocalPlayer
+local L2 = win:Tab("Combat")
 
-local char = client.Character
+local L3 = win:Tab("Teleports")
 
-local noclip = false
+local L4 = win:Tab("Visual")
 
-MainSection:Slider("WalkSpeed",0,1000,16, function(t)
+local L5 = win:Tab("Auto Buy")
 
-	game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = tend)
+local L6 = win:Tab("Others")
 
-MainSection:Slider("Jump Power",0,1000,50, function(t)
+local L7 = win:Tab("Toggles")
 
-	game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = t
+local L8 = win:Tab("Credits")
 
-end)
+L1:Button("Normall Size", function()
 
-MainSection:Toggle("Noclip",false, function(t)
+game.Players.LocalPlayer.Character.Humanoid.BodyDepthScale:Destroy()
 
-    noclip = t
-
-end)
-
-game:GetService("RunService").RenderStepped:Connect(function()
-
-    if noclip == true then
-
-        game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-
-    end
+game.Players.LocalPlayer.Character.Humanoid.BodyWidthScale:Destroy()
 
 end)
 
-MainSection:Slider("Gravity",0,500,196, function(t)
+L1:Button("Fly(X)", function()
 
-    workspace.Gravity = t
+local plr = game.Players.LocalPlayer
 
-end)
+	local mouse = plr:GetMouse()	local Humanoid = game.Players.LocalPlayer.Character.Humanoid or game.Players.LocalPlayer.Character.humanoid  
 
-MainSection:Toggle("Autopick Gun",false, function(t)
+	localplayer = plr
 
-	if t then
+	if workspace:FindFirstChild("Core") then
 
-		sheriff.Character.Humanoid.Died:Connect(function() game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = sheriff.Character.HumanoidRootPart.CFrame end)
+		workspace.Core:Destroy()
 
 	end
 
-end)
+	local Core = Instance.new("Part")
 
-MainSection:Button("Find Murder", function()
+	Core.Name = "Core"
 
-    for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+	Core.Size = Vector3.new(0.05, 0.05, 0.05)
 
-        if v.Character:FindFirstChild("Knife") or v.Backpack:FindFirstChild("Knife") then
+	spawn(function()
 
-            UILib:Notification("Notification", v.Name.."Is Murder", "Okay")    
+		Core.Parent = workspace
 
-        end
+		local Weld = Instance.new("Weld", Core)
 
-    end
+		Weld.Part0 = Core
 
-end)
+		Weld.Part1 = localplayer.Character.LowerTorso
 
-MainSection:Button("Find Murder", function()
+		Weld.C0 = CFrame.new(0, 0, 0)
 
-    for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+	end)
 
-        if v.Character:FindFirstChild("Revolver") or v.Backpack:FindFirstChild("Revolver") then
+	workspace:WaitForChild("Core")
 
-            UILib:Notification("Notification", v.Name.."Is Sheriff", "Okay")    
+	local torso = workspace.Core
 
-        end
+	flying = true
 
-    end
+	local speed=10
 
-end)
+	local keys={a=false,d=false,w=false,s=false} 
 
-MainSection:Button("Tp Tp Murder", function()
+	local e1
 
-    for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+	local e2
 
-		if v.Character:FindFirstChild("Knife") or v.Backpack:FindFirstChild("Knife") then
+	local function start()
 
-			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame * CFrame.new(0, 3, 0)
+		local pos = Instance.new("BodyPosition",torso)
 
-		end
+		local gyro = Instance.new("BodyGyro",torso)
 
-	end
+		pos.Name="EPIXPOS"
 
-end)
+		pos.maxForce = Vector3.new(math.huge, math.huge, math.huge)
 
-MainSection:Button("Tp Tp Sheriff", function()
+		pos.position = torso.Position
 
-	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+		gyro.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
 
-		if v.Character:FindFirstChild("Revolver") or v.Backpack:FindFirstChild("Revolver") or v.Character:FindFirstChild("Gun") or v.Backpack:FindFirstChild("Gun") then
+		gyro.cframe = torso.CFrame
 
-			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame * CFrame.new(0, 3, 0)
+		repeat
 
-		end
+			wait()
 
-	end
+			Humanoid.PlatformStand=true
 
-end)
+			local new=gyro.cframe - gyro.cframe.p + pos.position
 
--- Emotes
+			if not keys.w and not keys.s and not keys.a and not keys.d then
 
-local EmotesSection = win:Tab("Emotes")
-
-EmotesSection:Button("Sit", function()
-
-    local string_1 = "sit";
-
-    local Target = game:GetService("ReplicatedStorage").PlayEmote;
-
-    Target:Fire(string_1);
-
-end)
-
-EmotesSection:Button("Zombie", function()
-
-    local string_1 = "zombie";
-
-    local Target = game:GetService("ReplicatedStorage").PlayEmote;
-
-    Target:Fire(string_1);
-
-end)
-
-EmotesSection:Button("Spray", function()
-
-    local string_1 = "SprayPaint";
-
-    local Target = game:GetService("ReplicatedStorage").PlayEmote;
-
-    Target:Fire(string_1);
-
-end)
-
-EmotesSection:Button("Dab", function()
-
-    local string_1 = "dab";
-
-    local Target = game:GetService("ReplicatedStorage").PlayEmote;
-
-    Target:Fire(string_1);
-
-end)
-
-EmotesSection:Button("Ninja", function()
-
-    local string_1 = "ninja";
-
-    local Target = game:GetService("ReplicatedStorage").PlayEmote;
-
-    Target:Fire(string_1);
-
-end)
-
-EmotesSection:Button("Floss", function()
-
-    local string_1 = "floss";
-
-    local Target = game:GetService("ReplicatedStorage").PlayEmote;
-
-    Target:Fire(string_1);
-
-end)
-
-EmotesSection:Button("Zen", function()
-
-    local string_1 = "zen";
-
-    local Target = game:GetService("ReplicatedStorage").PlayEmote;
-
-    Target:Fire(string_1);
-
-end)
-
-function ReturnColor(model)
-
-    if game:GetService("Players")[model.Name].Backpack:FindFirstChild("Knife") or game:GetService("Players")[model.Name]:FindFirstChild("Knife") then return Color3.fromRGB(255,0,0) end
-
-    if game:GetService("Players")[model.Name].Backpack:FindFirstChild("Gun") or game:GetService("Players")[model.Name].Backpack:FindFirstChild("Revolver") or game:GetService("Players")[model.Name]:FindFirstChild("Revolver") or game:GetService("Players")[model.Name]:FindFirstChild("Gun") then return Color3.fromRGB(0,0,255) end
-
-    return Color3.fromRGB(0, 255, 0)
-
-end
-
--- ESP
-
--- Add UI
-
-local ESPSection = win:Tab("ESP")
-
-local ESPEnabled = false
-
-local DistanceEnabled = true
-
-local TracersEnabled = true
-
-pcall(function()
-
-	
-
-	Camera = game:GetService("Workspace").CurrentCamera
-
-	RunService = game:GetService("RunService")
-
-	camera = workspace.CurrentCamera
-
-	Bottom = Vector2.new(camera.ViewportSize.X/2, camera.ViewportSize.Y)
-
-	function GetPoint(vector3)
-
-		local vector, onScreen = camera:WorldToScreenPoint(vector3)
-
-		return {Vector2.new(vector.X,vector.Y),onScreen,vector.Z}
-
-	end
-
-	
-
-	function MakeESP(model)
-
-		local CurrentParent = model.Parent
-
-	
-
-		local TopL = Drawing.new("Line")
-
-		local BottomL = Drawing.new("Line")
-
-		local LeftL = Drawing.new("Line")
-
-		local RightL = Drawing.new("Line")
-
-		local Tracer = Drawing.new("Line")
-
-		local Display = Drawing.new("Text")
-
-        coroutine.resume(coroutine.create(function()
-
-			while model.Parent == CurrentParent and model.Humanoid.Health > 0 do
-
-				
-
-				local Distance = (Camera.CFrame.Position - model.HumanoidRootPart.Position).Magnitude
-
-                local GetP = GetPoint(model.Head.Position)
-
-                local headps = model.Head.CFrame
-
-                
-
-				if ESPEnabled and GetP[2] then
-
-					
-
-                    -- Calculate Cords
-
-                    local topright = headps * CFrame.new(3,0.5, 0)
-
-                    local topleft = headps * CFrame.new(-3,0.5, 0)
-
-                    local bottomleft = headps * CFrame.new(-3,-7,0)
-
-                    local bottomright = headps * CFrame.new(3,-7,0)
-
-					topright = GetPoint(topright.p)[1]
-
-					topleft = GetPoint(topleft.p)[1]
-
-					bottomleft = GetPoint(bottomleft.p)[1]
-
-					bottomright = GetPoint(bottomright.p)[1]
-
-                    teamcolor = ReturnColor(model)
-
-                    TopL.Color, BottomL.Color, RightL.Color, LeftL.Color = teamcolor, teamcolor, teamcolor, teamcolor
-
-                    TopL.From, BottomL.From, RightL.From, LeftL.From = topleft, bottomleft, topright, topleft
-
-                    TopL.To, BottomL.To, RightL.To, LeftL.To = topright, bottomright, bottomright, bottomleft
-
-					TopL.Visible, BottomL.Visible, RightL.Visible, LeftL.Visible = true, true, true, true
-
-				else
-
-					TopL.Visible, BottomL.Visible, RightL.Visible, LeftL.Visible = false, false, false, false
-
-                end
-
-                
-
-                if ESPEnabled and TracersEnabled and GetP[2] then
-
-                    Tracer.Color = ReturnColor(model)
-
-					Tracer.From = Bottom
-
-					Tracer.To = GetPoint(headps.p)[1]
-
-					Tracer.Thickness = 1.5
-
-					Tracer.Visible = true
-
-				else
-
-					Tracer.Visible = false
-
-                end
-
-                
-
-				if ESPEnabled and DistanceEnabled and GetP[2] then
-
-					Display.Visible = true
-
-					Display.Position = GetPoint(headps.p + Vector3.new(0,0.5,0))[1]
-
-					Display.Center = true
-
-					Display.Text = tostring(math.floor(Distance)).." studs"
-
-				else
-
-					Display.Visible = false
-
-                end
-
-                
-
-				RunService.RenderStepped:Wait()
+				speed=5
 
 			end
 
-	
+			if keys.w then 
 
-			TopL:Remove()
+				new = new + workspace.CurrentCamera.CoordinateFrame.lookVector * speed
 
-			BottomL:Remove()
+				speed=speed+0
 
-			RightL:Remove()
+			end
 
-			LeftL:Remove()
+			if keys.s then 
 
-			Tracer:Remove()
+				new = new - workspace.CurrentCamera.CoordinateFrame.lookVector * speed
 
-			Display:Remove()
+				speed=speed+0
+
+			end
+
+			if keys.d then 
+
+				new = new * CFrame.new(speed,0,0)
+
+				speed=speed+0
+
+			end
+
+			if keys.a then 
+
+				new = new * CFrame.new(-speed,0,0)
+
+				speed=speed+0
+
+			end
+
+			if speed>10 then
+
+				speed=5
+
+			end
+
+			pos.position=new.p
+
+			if keys.w then
+
+				gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(-math.rad(speed*0),0,0)
+
+			elseif keys.s then
+
+				gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(math.rad(speed*0),0,0)
+
+			else
+
+				gyro.cframe = workspace.CurrentCamera.CoordinateFrame
+
+			end
+
+		until flying == false
+
+		if gyro then gyro:Destroy() end
+
+		if pos then pos:Destroy() end
+
+		flying=false
+
+		Humanoid.PlatformStand=false
+
+		speed=10
+
+	end
+
+	e1=mouse.KeyDown:connect(function(key)
+
+		if not torso or not torso.Parent then flying=false e1:disconnect() e2:disconnect() return end
+
+		if key=="w" then
+
+			keys.w=true
+
+		elseif key=="s" then
+
+			keys.s=true
+
+		elseif key=="a" then
+
+			keys.a=true
+
+		elseif key=="d" then
+
+			keys.d=true
+
+		elseif key=="x" then
+
+			if flying==true then
+
+				flying=false
+
+			else
+
+				flying=true
+
+				start()
+
+			end
+
+		end
+
+	end)
+
+	e2=mouse.KeyUp:connect(function(key)
+
+		if key=="w" then
+
+			keys.w=false
+
+		elseif key=="s" then
+
+			keys.s=false
+
+		elseif key=="a" then
+
+			keys.a=false
+
+		elseif key=="d" then
+
+			keys.d=false
+
+		end
+
+	end)
+
+	start()
+
+end)
+
+L1:Button("Trash Talk(J)", function()
+
+local words = {
+
+    'Damn how you missed a shoot?',
+
+    'trash xdxdxd',
+
+    'lucky shots',
+
+    'also ez',
+
+    'why you crying?',
+
+    'ez',
+
+    'im ur Father sorry son ',
+
+}
+
+local player = game.Players.LocalPlayer
+
+local keybind = 'j'
+
+local event = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+
+player:GetMouse().KeyDown:connect(function(key)
+
+    if key == keybind then
+
+        event:FireServer(words[math.random(#words)], "All")
+
+    end
+
+end)
+
+end)
+
+L2:Button("HitboxLock", function()
+
+loadstring(game:HttpGet("https://pastebin.com/raw/dXGvHENJ"))()
+
+end)
+
+L2:Button("BallLock", function()
+
+loadstring(game:HttpGet("https://pastebin.com/raw/zWubTkVe"))()
+
+end)
+
+L2:Button("Dotlock", function()
+
+local ScreenGui = Instance.new("ScreenGui")
+
+local TextLabel = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+_G.KEY = "q"
+
+_G.PART = "HumanoidRootPart"
+
+_G.PRED = 0.1563
+
+_G.Frame = Vector3.new(0,0.53,0)
+
+local CC = game:GetService "Workspace".CurrentCamera
+
+local Plr
+
+local enabled = false
+
+local accomidationfactor = nil
+
+local mouse = game.Players.LocalPlayer:GetMouse()
+
+local placemarker = Instance.new("Part", game.Workspace)
+
+local guimain = Instance.new("Folder", game.CoreGui)
+
+function makemarker(Parent, Adornee, Color, Size, Size2)
+
+    local e = Instance.new("BillboardGui", Parent)
+
+    e.Name = "PP"
+
+    e.Adornee = Adornee
+
+    e.Size = UDim2.new(Size, Size2, Size, Size2)
+
+    e.AlwaysOnTop = true
+
+    local a = Instance.new("Frame", e)
+
+    a.Size = UDim2.new(4, 0, 4, 0)
+
+    a.BackgroundTransparency = 0.1
+
+    a.BackgroundColor3 = Color
+
+    local g = Instance.new("UICorner", a)
+
+    g.CornerRadius = UDim.new(50, 50)
+
+    return (e)
+
+end
+
+local data = game.Players:GetPlayers()
+
+function noob(player)
+
+    local character
+
+    repeat
+
+        wait()
+
+    until player.Character
+
+    local handler = makemarker(guimain, player.Character:WaitForChild(_G.PART), Color3.fromRGB(255, 255, 255), 0.0, 0)
+
+    handler.Name = player.Name
+
+    player.CharacterAdded:connect(
+
+        function(Char)
+
+            handler.Adornee = Char:WaitForChild(_G.PART)
+
+        end
+
+    )
+
+    local TextLabel = Instance.new("TextLabel", handler)
+
+    TextLabel.BackgroundTransparency = 1
+
+    TextLabel.Position = UDim2.new(0, 0, 0, -50)
+
+    TextLabel.Size = UDim2.new(0, 100, 0, 100)
+
+    TextLabel.Font = Enum.Font.SourceSansSemibold
+
+    TextLabel.TextSize = 14
+
+    TextLabel.TextColor3 = Color3.new(1, 1, 1)
+
+    TextLabel.TextStrokeTransparency = 0
+
+    TextLabel.TextYAlignment = Enum.TextYAlignment.Bottom
+
+    TextLabel.Text = "Name: " .. player.Name
+
+    TextLabel.ZIndex = 10
+
+    spawn(
+
+        function()
+
+            while wait() do
+
+                if player.Character then
+
+                --TextLabel.Text = player.Name.." | Bounty: "..tostring(player:WaitForChild("leaderstats").Wanted.Value).." | "..tostring(math.floor(player.Character:WaitForChild("Humanoid").Health))
+
+                end
+
+            end
+
+        end
+
+    )
+
+end
+
+for i = 1, #data do
+
+    if data[i] ~= game.Players.LocalPlayer then
+
+        noob(data[i])
+
+    end
+
+end
+
+game.Players.PlayerAdded:connect(
+
+    function(Player)
+
+        noob(Player)
+
+    end
+
+)
+
+game.Players.PlayerRemoving:Connect(
+
+    function(player)
+
+        guimain[player.Name]:Destroy()
+
+    end
+
+)
+
+spawn(
+
+    function()
+
+        placemarker.Anchored = true
+
+        placemarker.CanCollide = false
+
+        placemarker.Size = Vector3.new(0.1, 0.1, 0.1)
+
+        placemarker.Transparency = 0.1
+
+        makemarker(placemarker, placemarker, Color3.fromRGB(255, 0, 255), 0.20, 0)
+
+    end
+
+)
+
+mouse.KeyDown:Connect(
+
+    function(k)
+
+        if k ~= _G.KEY then
+
+            return
+
+        end
+
+        if enabled then
+
+            -- guimain[Plr.Name].Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+
+            enabled = false
+
+            TextLabel.TextColor3 = Color3.fromRGB(255, 20, 75)
+
+            TextLabel.Text = "------"
+
+        else
+
+            --guimain[Plr.Name].Frame.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+
+            enabled = true
+
+            Plr = getClosestPlayerToCursor()
+
+            TextLabel.TextColor3 = Color3.fromRGB(12, 255, 0)
+
+            TextLabel.Text = Plr.Character.Humanoid.DisplayName
+
+        end
+
+    end)
+
+function getClosestPlayerToCursor()
+
+    local closestPlayer
+
+    local shortestDistance = math.huge
+
+    for i, v in pairs(game.Players:GetPlayers()) do
+
+        if
+
+            v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("Humanoid") and
+
+                v.Character.Humanoid.Health ~= 0 and
+
+                v.Character:FindFirstChild(_G.PART)
+
+         then
+
+            local pos = CC:WorldToViewportPoint(v.Character.PrimaryPart.Position)
+
+            local magnitude = (Vector2.new(pos.X, pos.Y) - Vector2.new(mouse.X, mouse.Y)).magnitude
+
+            if magnitude < shortestDistance then
+
+                closestPlayer = v
+
+                shortestDistance = magnitude
+
+            end
+
+        end
+
+    end
+
+    return closestPlayer
+
+end
+
+game:GetService "RunService".Stepped:connect(
+
+    function()
+
+        if enabled and Plr.Character and Plr.Character:FindFirstChild(_G.PART) then
+
+            placemarker.CFrame =
+
+                CFrame.new(Plr.Character[_G.PART].Position + _G.Frame + (Plr.Character[_G.PART].Velocity * accomidationfactor))
+
+        else
+
+            placemarker.CFrame = CFrame.new(0, 9999, 0)
+
+        end
+
+    end
+
+)
+
+local mt = getrawmetatable(game)
+
+local old = mt.__namecall
+
+setreadonly(mt, false)
+
+mt.__namecall =
+
+    newcclosure(
+
+    function(...)
+
+        local args = {...}
+
+        if enabled and getnamecallmethod() == "FireServer" and args[2] == "UpdateMousePos" then
+
+            args[3] = Plr.Character[_G.PART].Position+ _G.Frame + (Plr.Character[_G.PART].Velocity * accomidationfactor)
+
+            return old(unpack(args))
+
+        end
+
+        return old(...)
+
+    end
+
+)
+
+game.Players.LocalPlayer.Chatted:Connect(
+
+    function(Chat)
+
+        if Chat == "print" then
+
+            print(_G.PRED)
+
+        end
+
+    end
+
+)
+
+game.Players.LocalPlayer.Chatted:Connect(
+
+    function(Chat)
+
+        if Chat == "Code:1029" then
+
+            _G.KEY = nil
+
+            _G.AIR = nil
+
+            _G.PART = nil
+
+            _G.PRED = nil
+
+            TextLabel.Visible = false
+
+        end
+
+    end
+
+)
+
+game.Players.LocalPlayer.Chatted:Connect(
+
+    function(Chat)
+
+        if Chat == "Code:1030" then
+
+            _G.KEY = "q"
+
+            _G.AIR = 0.00005
+
+            _G.PART = "LowerTorso"
+
+            _G.PRED = 0.029
+
+            TextLabel.Visible = true
+
+        end
+
+    end
+
+)
+
+game.Players.LocalPlayer.Chatted:Connect(
+
+    function(Chat)
+
+        if Chat == "P+" then
+
+            _G.PRED = _G.PRED+0.001
+
+        end
+
+    end
+
+)
+
+game.Players.LocalPlayer.Chatted:Connect(
+
+    function(Chat)
+
+        if Chat == "P-" then
+
+            _G.PRED = _G.PRED-0.001
+
+        end
+
+    end
+
+)
+
+while wait() do
+
+    --[[
+
+    if getClosestPlayerToCursor().Character.Humanoid.FloorMaterial == Enum.Material.Air then
+
+        accomidationfactor = _G.AIR
+
+        print("jump 1")
+
+    else
+
+        local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+
+        local Value = tostring(ping)
+
+        local pingValue = Value:split(" ")
+
+        local PingNumber = pingValue[1]
+
+        accomidationfactor = PingNumber / 1000 + 0.016
+
+    end
+
+    ]]
+
+    if getClosestPlayerToCursor().Character.Humanoid.Jump == true and getClosestPlayerToCursor().Character.Humanoid.FloorMaterial == Enum.Material.Air then
+
+        _G.Frame = Vector3.new(0,-2.3,0)
+
+wait(0.05)
+
+    else
+
+        local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+
+        local Value = tostring(ping)
+
+        local pingValue = Value:split(" ")
+
+        local PingNumber = pingValue[1]
 
         
 
-        end))
+        accomidationfactor = PingNumber / 1000 + _G.PRED
+
+        _G.Frame = Vector3.new(0,0.53,0)
 
     end
 
     
 
-	for _, Player in next, game:GetService("Players"):GetChildren() do
+end
 
-		if Player.Name ~= game.Players.LocalPlayer.Name then
+end)
 
-			MakeESP(Player.Character)
+L2:Button("StickLock", function()
 
-			Player.CharacterAdded:Connect(function()
+-- solo pro locker omg
 
-				delay(0.5, function()
+local configs = {
 
-					MakeESP(Player.Character)
+    main = {
 
-				end)
+        enabled = true,
 
-			end)
+        aimlockkey = "q",
 
-		end	
+        prediction = 0.1377,
+
+        aimpart = 'HumanoidRootPart',
+
+        notifications = true
+
+    }
+
+}
+
+local boxsettings = {
+
+    box = {
+
+        Showbox = true,
+
+        boxsize = Vector3.new(3.3, 3, 2.8),
+
+        markercolor = Color3.fromRGB(1, 120, 145),
+
+        markersize = UDim2.new(1, 0, 3, 0)
+
+    }
+
+}
+
+local box = Instance.new("Part", game.Workspace)
+
+local Mouse = game.Players.LocalPlayer:GetMouse()
+
+function makemarker(Parent, Adornee, Color, Size, Size2)
+
+    local box = Instance.new("BillboardGui", Parent)
+
+    box.Name = "nigga"
+
+    box.Adornee = Adornee
+
+    box.Size = UDim2.new(Size, Size2, Size, Size2)
+
+    box.AlwaysOnTop = true
+
+    local a = Instance.new("Frame", box)
+
+    a.Size = boxsettings.box.markersize
+
+    a.BackgroundColor3 = Color
+
+    local g = Instance.new("UICorner", a)
+
+    g.CornerRadius = UDim.new(50, 25)
+
+    return (box)
+
+end
+
+local Plr
+
+Mouse.KeyDown:Connect(function(KeyPressed)
+
+    if KeyPressed == (configs.main.aimlockkey) then
+
+        if configs.main.enabled == true then
+
+            configs.main.enabled = false
+
+            if configs.main.notifications == true then
+
+                Plr = FindClosestUser()
+
+                game.StarterGui:SetCore("SendNotification", {
+
+                    Title = "Private",
+
+                    Text = ""
+
+                })
+
+            end
+
+        else
+
+            Plr = FindClosestUser()
+
+            configs.main.enabled = true
+
+            if configs.main.notifications == true then
+
+                game.StarterGui:SetCore("SendNotification", {
+
+                    Title = "Private",
+
+                    Text = "" .. tostring(Plr.Character.Humanoid.DisplayName)
+
+                })
+
+            end
+
+        end
+
+    end
+
+end)
+
+local data = game.Players:GetPlayers()
+
+function noob(player)
+
+    local character
+
+    repeat
+
+        wait()
+
+    until player.Character
+
+    local handler = makemarker(guimain, player.Character:WaitForChild(configs.main.aimpart),
+
+        Color3.fromRGB(107, 184, 255), 0.10, 8)
+
+    handler.Name = player.Name
+
+    player.CharacterAdded:connect(function(Char)
+
+        handler.Adornee = Char:WaitForChild("HumanoidRootPart")
+
+    end)
+
+end
+
+for i = 1, #data do
+
+    if data[i] ~= game.Players.LocalPlayer then
+
+        noob(data[i])
+
+    end
+
+end
+
+game.Players.PlayerAdded:connect(function(Player)
+
+    noob(Player)
+
+end)
+
+spawn(function()
+
+    box.Anchored = true
+
+    box.CanCollide = false
+
+    box.Size = boxsettings.box.boxsize
+
+    if boxsettings.box.Showbox == true then
+
+        box.Transparency = 0.70
+
+    else
+
+        box.Transparency = 1
+
+    end
+
+    makemarker(box, box, boxsettings.box.markercolor, 0.40, 1)
+
+end)
+
+function FindClosestUser()
+
+    local closestPlayer
+
+    local ShortestDistance = 300
+
+    for i, v in pairs(game.Players:GetPlayers()) do
+
+        if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("Humanoid") and
+
+            v.Character.Humanoid.Health ~= 0 and v.Character:FindFirstChild("HumanoidRootPart") then
+
+            local pos = game:GetService "Workspace".CurrentCamera:WorldToViewportPoint(v.Character.PrimaryPart.Position)
+
+            local magnitude = (Vector2.new(pos.X, pos.Y) -
+
+                                  Vector2.new(game.Players.LocalPlayer:GetMouse().X,
+
+                    game.Players.LocalPlayer:GetMouse().Y)).magnitude
+
+            if magnitude < ShortestDistance then
+
+                closestPlayer = v
+
+                ShortestDistance = magnitude
+
+            end
+
+        end
+
+    end
+
+    return closestPlayer
+
+end
+
+game:GetService "RunService".Stepped:connect(function()
+
+    if configs.main.enabled and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
+
+        box.CFrame = CFrame.new(Plr.Character[configs.main.aimpart].Position +
+
+                                    (Plr.Character.UpperTorso.Velocity * configs.main.prediction))
+
+    else
+
+        box.CFrame = CFrame.new(0, 9999, 0)
+
+    end
+
+end)
+
+repeat
+
+    wait()
+
+until game:IsLoaded()
+
+local mt = getrawmetatable(game)
+
+local old = mt.__namecall
+
+setreadonly(mt, false)
+
+mt.__namecall = newcclosure(function(...)
+
+    local args = {...}
+
+    if configs.main.enabled and getnamecallmethod() == "FireServer" and args[2] == "UpdateMousePos" then
+
+        args[3] = Plr.Character[configs.main.aimpart].Position +
+
+                      (Plr.Character[configs.main.aimpart].Velocity * configs.main.prediction)
+
+        return old(unpack(args))
+
+    end
+
+    return old(...)
+
+end)
+
+end)
+
+L3:Button("Backrooms", function()
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(48112.796875, 10815.830078125, -47357.50390625)
+
+end)
+
+L3:Button("DoubleBarrel", function()
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(341.6957092285156, 57.04527282714844, -1754.225341796875)
+
+end)
+
+L3:Button("Revolver", function()
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(222.515793, 57.045728, -1163.8186)
+
+end)
+
+L3:Button("Uphill", function()
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(276.60064697265625, 96.58828735351562, -289.332275390625)
+
+end)
+
+L3:Button("Downhill", function()
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(467.4198913574219, 57.32100296020508, -1319.4285888671875)
+
+end)
+
+L3:Button("Fitness", function()
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(316.4746398925781, 97.38158416748047, -546.8848266601562)
+
+end)
+
+L3:Button("Save Zone", function()
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(48626.9375, 10842.6787109375, -47419.8828125)
+
+end)
+
+L4:Button("HeadLess(not fe)", function()
+
+game.Players.LocalPlayer.Character.Head.Transparency = 1
+
+for i,v in pairs(game.Players.LocalPlayer.Character.Head:GetChildren()) do
+
+if (v:IsA("Decal")) then
+
+v:Destroy()
+
+end
+
+end
+
+end)
+
+L4:Button("Korblox(not fe)", function()
+
+local ply = game.Players.LocalPlayer
+
+        local chr = ply.Character
+
+        chr.RightLowerLeg.MeshId = "902942093"
+
+        chr.RightLowerLeg.Transparency = "1"
+
+        chr.RightUpperLeg.MeshId = "http://www.roblox.com/asset/?id=902942096"
+
+        chr.RightUpperLeg.TextureID = "http://roblox.com/asset/?id=902843398"
+
+        chr.RightFoot.MeshId = "902942089"
+
+        chr.RightFoot.Transparency = "1"
+
+end)
+
+L4:Button("FullBright", function()
+
+game:GetService("Lighting").Brightness = 2
+
+game:GetService("Lighting").ClockTime = 14
+
+game:GetService("Lighting").FogEnd = 100000
+
+game:GetService("Lighting").GlobalShadows = false
+
+game:GetService("Lighting").OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+
+end)
+
+L4:Button("Dark Mode", function()
+
+game:GetService("Lighting").Brightness = 5
+
+game:GetService("Lighting").ClockTime = 18
+
+game:GetService("Lighting").FogEnd = 0
+
+game:GetService("Lighting").GlobalShadows = false
+
+game:GetService("Lighting").OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+
+end)
+
+L4:Button("Autumn", function()
+
+getgenv().mode = "Autumn" -- Choose from Summer and Autumn
+
+local a = game.Lighting
+
+a.Ambient = Color3.fromRGB(33, 33, 33)
+
+a.Brightness = 6.67
+
+a.ColorShift_Bottom = Color3.fromRGB(0, 0, 0)
+
+a.ColorShift_Top = Color3.fromRGB(255, 247, 237)
+
+a.EnvironmentDiffuseScale = 0.105
+
+a.EnvironmentSpecularScale = 0.522
+
+a.GlobalShadows = true
+
+a.OutdoorAmbient = Color3.fromRGB(51, 54, 67)
+
+a.ShadowSoftness = 0.04
+
+a.GeographicLatitude = -15.525
+
+a.ExposureCompensation = 0.75
+
+local b = Instance.new("BloomEffect", a)
+
+b.Enabled = true
+
+b.Intensity = 0.04
+
+b.Size = 1900
+
+b.Threshold = 0.915
+
+local c = Instance.new("ColorCorrectionEffect", a)
+
+c.Brightness = 0.176
+
+c.Contrast = 0.39
+
+c.Enabled = true
+
+c.Saturation = 0.2
+
+c.TintColor = Color3.fromRGB(217, 145, 57)
+
+if getgenv().mode == "Summer" then
+
+   c.TintColor = Color3.fromRGB(255, 220, 148)
+
+elseif getgenv().mode == "Autumn" then
+
+   c.TintColor = Color3.fromRGB(217, 145, 57)
+
+else
+
+   warn("No mode selected!")
+
+   print("Please select a mode")
+
+   b:Destroy()
+
+   c:Destroy()
+
+end
+
+local d = Instance.new("DepthOfFieldEffect", a)
+
+d.Enabled = true
+
+d.FarIntensity = 0.077
+
+d.FocusDistance = 21.54
+
+d.InFocusRadius = 20.77
+
+d.NearIntensity = 0.277
+
+local e = Instance.new("ColorCorrectionEffect", a)
+
+e.Brightness = 0
+
+e.Contrast = -0.07
+
+e.Saturation = 0
+
+e.Enabled = true
+
+e.TintColor = Color3.fromRGB(255, 247, 239)
+
+local e2 = Instance.new("ColorCorrectionEffect", a)
+
+e2.Brightness = 0.2
+
+e2.Contrast = 0.45
+
+e2.Saturation = -0.1
+
+e2.Enabled = true
+
+e2.TintColor = Color3.fromRGB(255, 255, 255)
+
+local s = Instance.new("SunRaysEffect", a)
+
+s.Enabled = true
+
+s.Intensity = 0.01
+
+s.Spread = 0.146
+
+end)
+
+L4:Button("Summer", function()
+
+getgenv().mode = "Summer" -- Choose from Summer and Autumn
+
+local a = game.Lighting
+
+a.Ambient = Color3.fromRGB(33, 33, 33)
+
+a.Brightness = 6.67
+
+a.ColorShift_Bottom = Color3.fromRGB(0, 0, 0)
+
+a.ColorShift_Top = Color3.fromRGB(255, 247, 237)
+
+a.EnvironmentDiffuseScale = 0.105
+
+a.EnvironmentSpecularScale = 0.522
+
+a.GlobalShadows = true
+
+a.OutdoorAmbient = Color3.fromRGB(51, 54, 67)
+
+a.ShadowSoftness = 0.04
+
+a.GeographicLatitude = -15.525
+
+a.ExposureCompensation = 0.75
+
+local b = Instance.new("BloomEffect", a)
+
+b.Enabled = true
+
+b.Intensity = 0.04
+
+b.Size = 1900
+
+b.Threshold = 0.915
+
+local c = Instance.new("ColorCorrectionEffect", a)
+
+c.Brightness = 0.176
+
+c.Contrast = 0.39
+
+c.Enabled = true
+
+c.Saturation = 0.2
+
+c.TintColor = Color3.fromRGB(217, 145, 57)
+
+if getgenv().mode == "Summer" then
+
+   c.TintColor = Color3.fromRGB(255, 220, 148)
+
+elseif getgenv().mode == "Autumn" then
+
+   c.TintColor = Color3.fromRGB(217, 145, 57)
+
+else
+
+   warn("No mode selected!")
+
+   print("Please select a mode")
+
+   b:Destroy()
+
+   c:Destroy()
+
+end
+
+local d = Instance.new("DepthOfFieldEffect", a)
+
+d.Enabled = true
+
+d.FarIntensity = 0.077
+
+d.FocusDistance = 21.54
+
+d.InFocusRadius = 20.77
+
+d.NearIntensity = 0.277
+
+local e = Instance.new("ColorCorrectionEffect", a)
+
+e.Brightness = 0
+
+e.Contrast = -0.07
+
+e.Saturation = 0
+
+e.Enabled = true
+
+e.TintColor = Color3.fromRGB(255, 247, 239)
+
+local e2 = Instance.new("ColorCorrectionEffect", a)
+
+e2.Brightness = 0.2
+
+e2.Contrast = 0.45
+
+e2.Saturation = -0.1
+
+e2.Enabled = true
+
+e2.TintColor = Color3.fromRGB(255, 255, 255)
+
+local s = Instance.new("SunRaysEffect", a)
+
+s.Enabled = true
+
+s.Intensity = 0.01
+
+s.Spread = 0.146
+
+end)
+
+L5:Button("[Double-Barrel SG] - $1400", function()
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(341.4410705566406, 57.04527282714844, -1754.1475830078125)
+
+wait(0.20)
+
+fireclickdetector(game.Workspace.Ignored.Shop['[Double-Barrel SG] - $1400'].ClickDetector)
+
+end)
+
+L5:Button("[Revolver] - $1300", function()
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(222.27342224121094, 57.04527282714844, -1163.815185546875)
+
+wait(0.20)
+
+fireclickdetector(game.Workspace.Ignored.Shop['[Revolver] - $1300'].ClickDetector)
+
+end)
+
+L5:Button("[SMG] - $750", function()
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(452.0499572753906, 57.32101058959961, -1325.953125)
+
+wait(0.20)
+
+fireclickdetector(game.Workspace.Ignored.Shop['[SMG] - $750'].ClickDetector)
+
+end)
+
+L5:Button("[Shotgun] - $1250", function()
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(453.2037048339844, 57.32100296020508, -1314.097900390625)
+
+wait(0.20)
+
+fireclickdetector(game.Workspace.Ignored.Shop['[Shotgun] - $1250'].ClickDetector)
+
+end)
+
+L5:Button("[AK47] - $2250", function()
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(467.5211486816406, 57.32100296020508, -1325.2308349609375)
+
+wait(0.20)
+
+fireclickdetector(game.Workspace.Ignored.Shop['[AK47] - $2250'].ClickDetector)
+
+end)
+
+L7:Toggle("Auto Stomp",false, function(t)
+
+	if t then
+
+getgenv().l = true
+
+while getgenv().l do
+
+wait(0.0001)
+
+local args = {
+
+    [1] = "Stomp"
+
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+
+end
+
+else
+
+getgenv().l = false
+
+while getgenv().l do
+
+wait(0.0001)
+
+local args = {
+
+    [1] = "Stomp"
+
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+
+end
 
 	end
 
-	
+end)
 
-	game:GetService("Players").PlayerAdded:Connect(function(player)
+L7:Toggle("Auto Skinny",false, function(t)
 
-        player.CharacterAdded:Connect(function()
+	if t then
 
-            delay(0.5, function()
+		getgenv().l = true
 
-                MakeESP(player.Character)
+while getgenv().l do
 
-            end)
+wait(0.001)
 
-		end)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(279.54888916015625, 97.33283996582031, -559.728271484375)
 
-	end)
+wait(0.001)
 
-	
+fireclickdetector(game.Workspace.Ignored.Shop['[Lettuce] - $5'].ClickDetector)
+
+wait(0.001)
+
+local args = {
+
+    [1] = "AnimationPack",
+
+    [2] = "Lay"
+
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+
+end
+
+else
+
+getgenv().l = false
+
+while getgenv().l do
+
+wait(0.001)
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(279.54888916015625, 97.33283996582031, -559.728271484375)
+
+wait(0.001)
+
+fireclickdetector(game.Workspace.Ignored.Shop['[Lettuce] - $5'].ClickDetector)
+
+wait(0.001)
+
+local args = {
+
+    [1] = "AnimationPack",
+
+    [2] = "Lay"
+
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+
+end
+
+	end
 
 end)
 
--- Enables/Disables ESP. Main toggle
+L7:Toggle("BlatantAA",false, function(t)
 
-ESPSection:Toggle("ESP",false, function(t)
+	if t then
 
-    ESPEnabled = t
+getgenv().BlatantAA = true
+
+local Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+
+while getgenv().BlatantAA == true  do
+
+    task.wait()
+
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = (CFrame.new(Position) + Vector3.new(math.random(-15, 15), math.random(-15, 15), math.random(-15, 15))) * CFrame.Angles(math.rad(math.random(-180, 180)), math.rad(math.random(-180, 180)), math.rad(math.random(-180, 180)))
+
+end
+
+else
+
+getgenv().BlatantAA = false
+
+local Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+
+while getgenv().BlatantAA == true  do
+
+    task.wait()
+
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = (CFrame.new(Position) + Vector3.new(math.random(-15, 15), math.random(-15, 15), math.random(-15, 15))) * CFrame.Angles(math.rad(math.random(-180, 180)), math.rad(math.random(-180, 180)), math.rad(math.random(-180, 180)))
+
+end
+
+	end
 
 end)
 
--- Toggles tracers
+L8:Label("Made by thekai#7058")
 
-ESPSection:Toggle("Tracers",true, function(t)
+L8:Button("Copy Name And Tag", function()
 
-    TracersEnabled = t
-
-end)
-
--- Toggles distance display
-
-ESPSection:Toggle("Distance Display",false, function(t)
-
-    DistanceEnabled = t
-
-end)
-
----------------------------------------------------------------------------------------------------
-
--- Other Func
-
--- Add UI
-
-local Settings = win:Tab("Settings")
-
-Settings:Label("UI Toggle Key:  Right-Ctrl")
-
-Settings:Button("Copy Discord Invite", function()
-
-    setclipboard("https://discord.gg/4KqkXRDdGE")
-
-    UILib:Notification("Notification", "Copied!", "Okay")
+setclipboard("thekai#7058")
 
 end)
