@@ -20,6 +20,12 @@ local L4 = win:Tab("Visual")
 local L5 = win:Tab("Auto Buy")
 local L6 = win:Tab("Toggles")
 
+L1:Button("Rejoin", function()
+local ts = game:GetService("TeleportService")
+local p = game:GetService("Players").LocalPlayer
+ts:Teleport(game.PlaceId, p)
+end)
+
 L1:Button("Normall Size", function()
 game.Players.LocalPlayer.Character.Humanoid.BodyDepthScale:Destroy()
 game.Players.LocalPlayer.Character.Humanoid.BodyWidthScale:Destroy()
@@ -30,7 +36,7 @@ loadstring(game:HttpGet("https://pastebin.com/raw/gg0LV6a1"))()
 end)
 
 L1:Button("Trash Talk(J)", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/M1e2cCqn"))()
+loadstring(game:HttpGet(" "))()
 end)
 
 L2:Button("HitboxLock", function()
@@ -77,6 +83,62 @@ L3:Button("Save Zone", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(48626.9375, 10842.6787109375, -47419.8828125)
 end)
 
+L3:Button("Jail", function()
+local args = {
+    [1] = "AnimationPack",
+    [2] = "Lay"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+wait(0.20)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-97.15665435791016, 101.97016906738281, -434.90130615234375)
+end)
+
+
+L3:Button("Police Department Chief", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-65.44059753417969, 100.12619018554688, -328.56298828125)
+end)
+
+
+L3:Button("Casino", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(37.87631607055664, 93.00724029541016, -1581.596435546875)
+end)
+
+
+L3:Button("Da Museum", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(11.703581809997559, 120.67227935791016, -803.551513671875)
+end)
+
+
+L3:Button("Bank Safe", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(55.68852996826172, 25.807445526123047, -641.0148315429688)
+end)
+
+
+L3:Button("Basketball", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(855.6533813476562, 57.501136779785156, -1014.509765625)
+end)
+
+
+L3:Button("House", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(173.57481384277344, 97.1888198852539, -385.2660217285156)
+end)
+
+
+L3:Button("Circle", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(547.7025146484375, 49.00687026977539, -723.1868896484375)
+end)
+
+
+L3:Button("Bank", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(130.60269165039062, 57.08918762207031, -825.8562622070312)
+end)
+
+
+L3:Button("Shop", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3.887301445007324, 57.592567443847656, -1077.23681640625)
+end)
+
 L4:Button("HeadLess", function()
 game.Players.LocalPlayer.Character.Head.Transparency = 1
 for i,v in pairs(game.Players.LocalPlayer.Character.Head:GetChildren()) do
@@ -101,6 +163,20 @@ L4:Button("Blue Flame Face", function()
 game.Players.LocalPlayer.Character.Head.face:Destroy()
 local decal = Instance.new("Decal")
 decal.Texture = "http://www.roblox.com/asset/?id=5904127108"
+decal.Parent = game.Players.LocalPlayer.Character.Head
+end)
+
+L4:Button("VG.HUB.Face", function()
+game.Players.LocalPlayer.Character.Head.face:Destroy()
+local decal = Instance.new("Decal")
+decal.Texture = "http://www.roblox.com/asset/?id=6587457747"
+decal.Parent = game.Players.LocalPlayer.Character.Head
+end)
+
+L4:Button("Synapse.X Face", function()
+game.Players.LocalPlayer.Character.Head.face:Destroy()
+local decal = Instance.new("Decal")
+decal.Texture = "http://www.roblox.com/asset/?id=148970562"
 decal.Parent = game.Players.LocalPlayer.Character.Head
 end)
 
