@@ -10,6 +10,7 @@ local L3 = win:Tab("Teleports")
 local L4 = win:Tab("Visual")
 local L5 = win:Tab("Auto Buy")
 local L6 = win:Tab("Toggles")
+local L7 = win:Tab("Emotes")
 
 L1:Button("Rejoin", function()
 local ts = game:GetService("TeleportService")
@@ -330,4 +331,67 @@ while getgenv().BlatantAA == true  do
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = (CFrame.new(Position) + Vector3.new(math.random(-15, 15), math.random(-15, 15), math.random(-15, 15))) * CFrame.Angles(math.rad(math.random(-180, 180)), math.rad(math.random(-180, 180)), math.rad(math.random(-180, 180)))
 end
 	end
+end)
+
+L7:Button("Lean", function()
+local args = {
+    [1] = "AnimationPack",
+    [2] = "Lean"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L7:Button("Lay", function()
+local args = {
+    [1] = "AnimationPack",
+    [2] = "Lay"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L7:Button("Dance1", function()
+local args = {
+    [1] = "AnimationPack",
+    [2] = "Dance1"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L7:Button("Dance2", function()
+local args = {
+    [1] = "AnimationPack",
+    [2] = "Dance2"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L7:Button("Greet", function()
+local args = {
+    [1] = "AnimationPack",
+    [2] = "Greet"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L7:Button("Chest Pump", function()
+local args = {
+    [1] = "AnimationPack",
+    [2] = "Chest Pump"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L7:Button("Playing", function()
+local args = {
+    [1] = "AnimationPack",
+    [2] = "Praying"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
 end)
