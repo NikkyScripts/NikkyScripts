@@ -42,12 +42,15 @@ end)
 L2:Button("Label-Lock", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/cGkuxZuK"))()
 end)
+
 L2:Button("Hentai Lock", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/vPTcndMy"))()
 end)
+
 L2:Button("George-Floyd-Lock", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/9wvDa0qj"))()
 end)
+
 L2:Button("Camlock", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/0zhRwJvm"))()
 end)
