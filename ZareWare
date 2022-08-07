@@ -387,7 +387,7 @@ local args = {
 game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
 end)
 
-L7:Button("Playing", function()
+L7:Button("Praying", function()
 local args = {
     [1] = "AnimationPack",
     [2] = "Praying"
