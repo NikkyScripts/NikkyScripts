@@ -337,11 +337,11 @@ L6:Toggle("Casino Farm (300k Req)",false, function(t)
 	if t then
 _G.Casino = true
 while _G.Casino do
-wait(0.000001)
+wait(0.0000001)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(92.2022933959961, 57.17628479003906, -1524.85986328125)
 wait(0.0000001)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(95.28510284423828, 57.17628479003906, -1533.460693359375)
-wait(0.10)
+wait(0.0000001)
 local args = {
     [1] = "StartSPCoinflip",
     [2] = "Tail",
@@ -349,7 +349,7 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
-wait(0.1)
+wait(0.130)
 local args = {
     [1] = "StartSPCoinflip",
     [2] = "Head",
