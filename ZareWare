@@ -357,6 +357,22 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+wait(0.130)
+local args = {
+    [1] = "StartSPCoinflip",
+    [2] = "Head",
+    [3] = 50000
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+wait(0.130)
+local args = {
+    [1] = "StartSPCoinflip",
+    [2] = "Tail",
+    [3] = 50000
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
 end
 else
 _G.Casino = false
