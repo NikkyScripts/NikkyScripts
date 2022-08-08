@@ -334,6 +334,7 @@ end
 end)
 
 L6:Toggle("Casino Money Farm",false, function(t)
+        if t then
 _G.WHAT = true
 while _G.WHAT do
 wait(0.1)
