@@ -339,7 +339,9 @@ getgenv().l = true
 while getgenv().l do
 wait(0.0001)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(101.30584716796875, 57.17628479003906, -1532.78466796875)
+wait(0.001)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(101.36734771728516, 57.17475128173828, -1527.5960693359375)
+wait(1)
 local args = {
     [1] = "StartSPCoinflip",
     [2] = "Head",
