@@ -27,16 +27,16 @@ L1:Button("Fly(X)", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/gg0LV6a1"))()
 end)
 
+L1:Button("Trash Talk(J)", function()
+loadstring(game:HttpGet("https://pastebin.com/raw/eL5uTnFT"))()
+end)
+
 L1:Button("CFrame Speed (X)", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/KQ6b3U8E"))()
 end)
 
 L1:Button("CFrame Speed + ", function()
 getgenv().Multiplier = s
-end)
-
-L1:Button("Trash Talk(J)", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/eL5uTnFT"))()
 end)
 
 L2:Button("Label-Lock", function()
