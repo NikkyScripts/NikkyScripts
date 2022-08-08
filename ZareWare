@@ -361,9 +361,9 @@ end
 else
 _G.Casino = false
 while _G.Casino do
-wait(0.130)
+wait(0.00001)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(92.2022933959961, 57.17628479003906, -1524.85986328125)
-wait(0.130)
+wait(0.0001)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(95.28510284423828, 57.17628479003906, -1533.460693359375)
 wait(0.130)
 local args = {
