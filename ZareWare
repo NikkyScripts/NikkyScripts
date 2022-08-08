@@ -349,7 +349,7 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
-wait(0.130)
+wait(6)
 local args = {
     [1] = "StartSPCoinflip",
     [2] = "Head",
