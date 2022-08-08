@@ -347,7 +347,7 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
-
+wait(5)
 local args = {
     [1] = "StartSPCoinflip",
     [2] = "Tail",
@@ -355,7 +355,7 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
-
+wait(5)
 local args = {
     [1] = "StartSPCoinflip",
     [2] = "Head",
