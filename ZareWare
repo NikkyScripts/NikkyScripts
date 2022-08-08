@@ -74,7 +74,7 @@ L1:Button("CFrame Speed (X)", function()
 	end)
 end)
 
-L1:Slider("CFrame Speed ", function(S) (MinValue)
+L1:Slider("CFrame Speed ", function(S)
     getgenv().Multiplier = s
 end)
 
