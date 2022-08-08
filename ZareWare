@@ -253,7 +253,31 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(447.1799
 wait(0.40)
 fireclickdetector(game.Workspace.Ignored.Shop['[AR] - $1000'].ClickDetector)
 end)
---here
+
+L6:Toggle("Name",false, function(t)
+	if t then
+getgenv().l = true
+while getgenv().l do
+wait(0.0001)
+local args = {
+    [1] = "Stomp"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end
+else
+getgenv().l = false
+while getgenv().l do
+wait(0.0001)
+local args = {
+    [1] = "Stomp"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end
+end
+end)
+
 L7:Button("Lean", function()
 local args = {
     [1] = "AnimationPack",
