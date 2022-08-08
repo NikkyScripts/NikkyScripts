@@ -333,6 +333,43 @@ end
 	end
 end)
 
+L6:Toggle("Casino Money Farm",false, function(t)
+_G.WHAT = true
+while _G.WHAT do
+wait(0.1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(101.3751220703125, 57.17628479003906, -1532.750244140625)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(101.37582397460938, 57.1762809753418, -1527.6036376953125)
+wait(5)
+local args = {
+    [1] = "StartSPCoinflip",
+    [2] = "Head",
+    [3] = 50000
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+wait(5)
+local args = {
+    [1] = "StartSPCoinflip",
+    [2] = "Tail",
+    [3] = 50000
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+wait(5)
+local args = {
+    [1] = "StartSPCoinflip",
+    [2] = "Head",
+    [3] = 50000
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end
+else
+_G.WHAT = false
+while _G.WHAT do
+wait(5)
+end)
+
 L7:Button("Lean", function()
 local args = {
     [1] = "AnimationPack",
