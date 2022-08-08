@@ -254,7 +254,7 @@ wait(0.40)
 fireclickdetector(game.Workspace.Ignored.Shop['[AR] - $1000'].ClickDetector)
 end)
 
-L6:Toggle("Name",false, function(t)
+L6:Toggle("Auto Stomp",false, function(t)
 	if t then
 getgenv().l = true
 while getgenv().l do
