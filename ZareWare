@@ -365,13 +365,13 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
-
 end
 else
 getgenv().l = false
 while getgenv().l do
 wait(0.0001)
 print("Ass")
+end
 end
 end
 end)
