@@ -397,8 +397,6 @@ local args = {
 game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
 end
 end
-end
-end
 end)
 
 L7:Button("Lean", function()
