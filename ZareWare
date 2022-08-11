@@ -11,6 +11,8 @@ local L4 = win:Tab("Visual")
 local L5 = win:Tab("Auto Buy")
 local L6 = win:Tab("Toggles")
 local L7 = win:Tab("Emotes")
+local L8 = win:Tab("Name")
+local L9 = win:Tab("Name")
 
 L1:Button("Rejoin", function()
 local ts = game:GetService("TeleportService")
