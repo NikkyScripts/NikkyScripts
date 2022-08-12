@@ -32,8 +32,8 @@ L1:Button("Trash Talk(J)", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/eL5uTnFT"))()
 end)
 
-L1:Button("CFrame Speed (X)", function()
-loadstring(game:HttpGet(" "))()
+L1:Button("CFrame Speed (L)", function()
+loadstring(game:HttpGet("https://pastebin.com/raw/HSTMXhrb"))()
 end)
 
 L2:Button("Label-Lock", function()
