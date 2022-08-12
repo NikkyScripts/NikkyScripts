@@ -11,8 +11,8 @@ local L4 = win:Tab("Visual")
 local L5 = win:Tab("Auto Buy")
 local L6 = win:Tab("Toggles")
 local L7 = win:Tab("Emotes")
-local L8 = win:Tab("Name")
-local L9 = win:Tab("Name")
+local L8 = win:Tab("Music")
+local L9 = win:Tab("Themes")
 
 L1:Button("Rejoin", function()
 local ts = game:GetService("TeleportService")
@@ -346,6 +346,23 @@ L7:Button("Praying", function()
 local args = {
     [1] = "AnimationPack",
     [2] = "Praying"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L8:Button("Stop Music", function()
+local args = {
+    [1] = "BoomboxStop"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L8:Button(" ", function()
+local args = {
+    [1] = "Boombox",
+    [2] = "Music ID"
 }
 
 game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
