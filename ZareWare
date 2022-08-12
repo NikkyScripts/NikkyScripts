@@ -3,7 +3,7 @@ local UILib = loadstring(game:HttpGet('https://raw.githubusercontent.com/inceldo
 local win = UILib:Window("ZareWare",Color3.fromRGB(170, 0, 255), Enum.KeyCode.B)
 
 --------------------------------------------------------------------
-local L0 = win:Tab("Change Logs")
+
 local L1 = win:Tab("Player")
 local L2 = win:Tab("Combat")
 local L3 = win:Tab("Teleports")
@@ -16,24 +16,6 @@ local L8 = win:Tab("Music")
 L1:Button("Exit Game", function()
 game:Shutdown()
 end)
-
-L0:Label("Added Music Tab")
-
-L0:Label("Log Here")
-
-L0:Label("Log Here")
-
-L0:Label("Log Here")
-
-L0:Label("Log Here")
-
-L0:Label("Log Here")
-
-L0:Label("Log Here")
-
-L0:Label("Log Here")
-
-L0:Label("Log Here")
 
 L1:Button("Rejoin", function()
 local ts = game:GetService("TeleportService")
