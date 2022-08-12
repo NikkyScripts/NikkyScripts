@@ -13,6 +13,10 @@ local L6 = win:Tab("Toggles")
 local L7 = win:Tab("Emotes")
 local L8 = win:Tab("Music")
 
+L1:Button("Exit Game", function()
+game:Shutdown()
+end)
+
 L1:Button("Rejoin", function()
 local ts = game:GetService("TeleportService")
 local p = game:GetService("Players").LocalPlayer
