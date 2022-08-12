@@ -358,10 +358,74 @@ local args = {
 
 game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
 end)
-L8:Button(" ", function()
+
+L8:Button("Bandit", function()
 local args = {
     [1] = "Boombox",
-    [2] = "Music ID"
+    [2] = "6814841234"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L8:Button("Give me more", function()
+local args = {
+    [1] = "Boombox",
+    [2] = "9118868269"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L8:Button("Renai", function()
+local args = {
+    [1] = "Boombox",
+    [2] = "8494188412"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L8:Button("Crunch Time", function()
+local args = {
+    [1] = "Boombox",
+    [2] = "6823378863"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L8:Button("Alone", function()
+local args = {
+    [1] = "Boombox",
+    [2] = "1836756977"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L8:Button("Slay", function()
+local args = {
+    [1] = "Boombox",
+    [2] = "6816315850"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L8:Button("Chicken Nugget Dreamland", function()
+local args = {
+    [1] = "Boombox",
+    [2] = "9245561450"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end)
+
+L8:Button("Sugar Crush",  function()
+local args = {
+    [1] = "Boombox",
+    [2] = "6875625578"
 }
 
 game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
