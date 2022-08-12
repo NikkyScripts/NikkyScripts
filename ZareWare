@@ -12,7 +12,6 @@ local L5 = win:Tab("Auto Buy")
 local L6 = win:Tab("Toggles")
 local L7 = win:Tab("Emotes")
 local L8 = win:Tab("Music")
-local L9 = win:Tab("Themes")
 
 L1:Button("Rejoin", function()
 local ts = game:GetService("TeleportService")
@@ -34,11 +33,7 @@ loadstring(game:HttpGet("https://pastebin.com/raw/eL5uTnFT"))()
 end)
 
 L1:Button("CFrame Speed (X)", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/KQ6b3U8E"))()
-end)
-
-L1:Button("CFrame Speed + ", function()
-getgenv().Multiplier = s
+loadstring(game:HttpGet(" "))()
 end)
 
 L2:Button("Label-Lock", function()
