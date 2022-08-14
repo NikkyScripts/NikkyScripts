@@ -13,10 +13,6 @@ local L6 = win:Tab("Toggles")
 local L7 = win:Tab("Emotes")
 local L8 = win:Tab("Music")
 
-L1:Button("Exit Game", function()
-game:Shutdown()
-end)
-
 L1:Button("Rejoin", function()
 local ts = game:GetService("TeleportService")
 local p = game:GetService("Players").LocalPlayer
@@ -32,44 +28,12 @@ L1:Button("Fly(X)", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/gg0LV6a1"))()
 end)
 
-L1:Button("Trash Talk(J)", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/eL5uTnFT"))()
-end)
-
 L1:Button("CFrame Speed (L)", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/HSTMXhrb"))()
 end)
 
-L2:Button("Label-Lock", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/cGkuxZuK"))()
-end)
-
-L2:Button("Hentai Lock", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/vPTcndMy"))()
-end)
-
-L2:Button("George-Floyd-Lock", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/9wvDa0qj"))()
-end)
-
-L2:Button("Camlock", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/0zhRwJvm"))()
-end)
-
-L2:Button("HitboxLock", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/dXGvHENJ"))()
-end)
-
-L2:Button("BallLock", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/zWubTkVe"))()
-end)
-
 L2:Button("Dotlock", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/c6r9Jjrn"))()
-end)
-
-L2:Button("StickLock", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/1z1VrWcB"))()
 end)
 
 L3:Button("Backrooms", function()
@@ -307,67 +271,35 @@ end
 end
 end)
 
-L7:Button("Lean", function()
-local args = {
-    [1] = "AnimationPack",
-    [2] = "Lean"
-}
-
-game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
-end)
-
-L7:Button("Lay", function()
+L6:Toggle("Auto Skinny",false, function(t)
+	if t then
+getgenv().l = true
+while getgenv().l do
+wait(0.0001)
+for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+        if v.name == "[Lettuce]" then
+            v.Parent = game.Players.LocalPlayer.Character
+        end
+    end
+wait(0.0001)
+fireclickdetector(game.Workspace.Ignored.Shop['[Lettuce] - $5'].ClickDetector)
+wait(0.0001)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(281.0712585449219, 97.33283996582031, -557.681640625)
+wait(0.001)
 local args = {
     [1] = "AnimationPack",
     [2] = "Lay"
 }
 
 game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
-end)
-
-L7:Button("Dance1", function()
-local args = {
-    [1] = "AnimationPack",
-    [2] = "Dance1"
-}
-
-game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
-end)
-
-L7:Button("Dance2", function()
-local args = {
-    [1] = "AnimationPack",
-    [2] = "Dance2"
-}
-
-game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
-end)
-
-L7:Button("Greet", function()
-local args = {
-    [1] = "AnimationPack",
-    [2] = "Greet"
-}
-
-game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
-end)
-
-L7:Button("Chest Pump", function()
-local args = {
-    [1] = "AnimationPack",
-    [2] = "Chest Pump"
-}
-
-game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
-end)
-
-L7:Button("Praying", function()
-local args = {
-    [1] = "AnimationPack",
-    [2] = "Praying"
-}
-
-game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
+end
+else
+getgenv().l = false
+while getgenv().l do
+wait(0.0001)
+local Animate = game.Players.LocalPlayer.Character.Animate
+end
+end
 end)
 
 L8:Button("Stop Music", function()
@@ -418,15 +350,6 @@ L8:Button("Alone", function()
 local args = {
     [1] = "Boombox",
     [2] = "1836756977"
-}
-
-game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
-end)
-
-L8:Button("Slay", function()
-local args = {
-    [1] = "Boombox",
-    [2] = "6816315850"
 }
 
 game:GetService("ReplicatedStorage"):FindFirstChild(".gg/untitledhood"):FireServer(unpack(args))
